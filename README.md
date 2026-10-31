@@ -1,218 +1,174 @@
-# Restaurant POS - CodeIgniter 4 Assessment
+# Restaurant POS - CodeIgniter 4
 
-This project completes the three tasks in `_PHP Task (2).pdf`:
+This is my submission for the PHP/CodeIgniter assessment. The task sheet mentions CodeIgniter 4, so I built it on CodeIgniter 4.7.5 with PHP 8.
 
-1. **Task 1** - understand the supplied restaurant data and document the findings.
-2. **Task 2** - CodeIgniter 4 API that lists orders with full item, price and payment details.
-3. **Task 3** - CodeIgniter 4 cart with five items, quantity controls, 12.5% inclusive tax, total incl. tax and tax amount.
+The project has three parts:
 
-> The task PDF explicitly says **CodeIgniter 4** (`Codignator 4`). This project uses CodeIgniter **4.7.5**.
+- Task 1: understand the supplied menu, order and payment data and note the findings.
+- Task 2: an API that returns orders with their items, prices and payment details.
+- Task 3: a cart with five items, quantity controls and 12.5% inclusive tax.
 
-## GitHub repository description (copy this)
+I tested it on Windows with XAMPP and PHP 8.2.12. SQLite is used by default so it runs without setting up MySQL. A MySQL schema is also included.
 
-**Short description (GitHub "About" field):**
+## Repository description (copy for GitHub)
 
-```text
-CodeIgniter 4 restaurant POS assessment: orders + payments API, data-quality findings, and a session cart with 12.5% inclusive tax.
-```
-
-**Long description:**
+Short description:
 
 ```text
-A complete CodeIgniter 4 (PHP 8) assessment project for a restaurant POS use case. It contains: (1) a normalised SQLite/MySQL database built from the supplied menu, order-history and payments data, with documented data-quality findings; (2) a paginated REST API that lists orders with full line-item, price, payment, tips, discount, refund and balance-due details, plus a live data-quality endpoint; and (3) a session-based cart with five items, quantity increase/decrease, and correct 12.5% inclusive tax calculation in integer pence. Includes migrations, seeder, Postman collection, security filters (API key, rate limiting, CSRF), indexes and setup instructions.
+CodeIgniter 4 restaurant POS assessment with an orders/payments API, data-quality findings and a session cart that handles 12.5% inclusive tax.
 ```
 
-**Suggested GitHub topics:**
+Long description:
+
+```text
+CodeIgniter 4 (PHP 8) assessment project for a restaurant POS. It includes a normalised menu/order/payment database, a paginated REST API for orders with full item and payment details, a live data-quality endpoint with the findings from the supplied data, and a session-based cart with quantity controls and 12.5% inclusive tax. The project includes migrations, seed data, a Postman collection, API key support, rate limiting, CSRF protection and setup instructions for SQLite and MySQL.
+```
+
+Topics:
 
 ```text
 codeigniter4, php, php8, rest-api, mysql, sqlite, postman, restaurant-pos, shopping-cart, tax-calculation, interview-assessment
 ```
 
-## What is included
-
-- `app/` - controllers, models, services, filters, views, migration and seeder
-- `database/mysql_schema.sql` - optional MySQL schema + all sample data
-- `docs/DATA_FINDINGS.md` - Task 1 notes in detail
-- `postman/Restaurant-POS.postman_collection.json` - Task 2 Postman requests
-- `writable/database/restaurant_pos.sqlite` - ready-to-use SQLite database
-- `run.bat` - Windows one-click server start
-- `.env` - local SQLite configuration (no secrets)
-
 ## Requirements
 
-| Requirement | Details |
-|---|---|
-| PHP | 8.1 or newer; tested on 8.2.12 |
-| PHP extensions | `intl`, `sqlite3`, `mbstring`, `json` (the first two are the important ones for CI4 + SQLite) |
-| Composer | Needed only if `vendor/` is missing (it is not committed to Git) |
-| Database | SQLite is included; MySQL is optional |
-| Browser | Any modern browser for the UI |
-| Postman | Optional, for importing the API collection |
+- PHP 8.1 or newer. I used PHP 8.2.12.
+- PHP extensions: `intl`, `sqlite3`, `mbstring` and `json`.
+- Composer. You only need it if the `vendor` folder is missing.
+- XAMPP or any PHP web server. For a quick run I used PHP's built-in server.
 
-Check your PHP setup:
+You can check the extensions with:
 
 ```bat
 php -v
 php -m
 ```
 
-You should see `intl` and `sqlite3` in the module list. If they are missing, open `php.ini` and uncomment:
+`intl` and `sqlite3` should be in the list. If they are not, open `php.ini` and remove the `;` from these two lines:
 
 ```ini
 extension=intl
 extension=sqlite3
 ```
 
-Restart the terminal/Apache after changing `php.ini`.
+After changing `php.ini`, close and reopen the terminal.
 
-## How to run - full steps
+## How to run on Windows with XAMPP
 
-### Option A - Windows with XAMPP (recommended)
+1. Clone the repo and go into the folder:
 
-1. Clone the repository:
+```bat
+git clone https://github.com/azimkhan07/restaurant-pos-ci4-assessment.git
+cd restaurant-pos-ci4-assessment
+```
 
-   ```bat
-   git clone https://github.com/azimkhan07/restaurant-pos-ci4-assessment.git
-   cd restaurant-pos-ci4-assessment
-   ```
+2. Install the dependencies if `vendor` is not there:
 
-2. Install dependencies if the `vendor` folder is missing:
+```bat
+composer install
+```
 
-   ```bat
-   composer install
-   ```
+If Composer says `ext-intl` is missing, enable `intl` in `php.ini` first. You can also run:
 
-   If Composer reports that `ext-intl` is missing, enable `intl` in `php.ini` first, or run:
+```bat
+php -d extension=intl C:\composer\composer.phar install
+```
 
-   ```bat
-   php -d extension=intl C:\composer\composer.phar install
-   ```
+3. The `.env` file is already included. If it is missing, copy it from the sample:
 
-3. Make sure `.env` exists. It is committed in this repository. If it is missing:
+```bat
+copy env .env
+```
 
-   ```bat
-   copy env .env
-   ```
+4. Start the server:
 
-4. Start the app:
+```bat
+run.bat
+```
 
-   ```bat
-   run.bat
-   ```
+`run.bat` uses `D:\xampp\php\php.exe` if `php` is not on PATH, and starts the server with `intl` and `sqlite3` enabled.
 
-   `run.bat` automatically uses `D:\xampp\php\php.exe` when `php` is not on PATH and starts the server with `intl` + `sqlite3` enabled.
+5. Open http://localhost:8080 in the browser.
 
-5. Open <http://localhost:8080>.
-
-The bundled SQLite database is already seeded. If you want to rebuild it from scratch:
+The SQLite database is already created and seeded. If you want to rebuild it:
 
 ```bat
 php spark migrate --all
 php spark db:seed AssessmentSeeder
 ```
 
-### Option B - Any OS with PHP on PATH
+If `php` is not on PATH, use the full path to the XAMPP PHP, for example:
+
+```bat
+D:\xampp\php\php.exe -d extension=intl -d extension=sqlite3 spark migrate --all
+D:\xampp\php\php.exe -d extension=intl -d extension=sqlite3 spark db:seed AssessmentSeeder
+```
+
+## How to run without XAMPP
+
+Make sure PHP and Composer are installed, then run:
 
 ```bash
 composer install
-cp env .env          # only if .env is missing
+cp env .env
 php spark migrate --all
 php spark db:seed AssessmentSeeder
 php spark serve
 ```
 
-If the `intl`/`sqlite3` extensions are not enabled globally, start the PHP server directly with them enabled:
+If `intl` and `sqlite3` are not enabled globally, start PHP directly with them:
 
 ```bash
 php -d extension=intl -d extension=sqlite3 -S 127.0.0.1:8080 -t public public/index.php
 ```
 
-Then open <http://localhost:8080>.
+## Using MySQL instead of SQLite
 
-### Option C - MySQL instead of SQLite
+SQLite is the default because it needs no extra setup. If you want to use MySQL:
 
-1. Create a MySQL database named `restaurant_pos`.
-2. Import `database/mysql_schema.sql`.
-3. Copy the values from `env.mysql.example` into `.env`:
+1. Create a database called `restaurant_pos`.
+2. Import `database/mysql_schema.sql`. It creates the tables and inserts the sample data.
+3. Copy the database settings from `env.mysql.example` into `.env`.
+4. Restart the server.
 
-   ```ini
-   database.default.hostname = localhost
-   database.default.database = restaurant_pos
-   database.default.username = root
-   database.default.password =
-   database.default.DBDriver = MySQLi
-   database.default.port = 3306
-   ```
+The MySQL settings look like this:
 
-4. Restart the server. No migration is needed because the SQL file creates and seeds all tables.
+```ini
+database.default.hostname = localhost
+database.default.database = restaurant_pos
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+```
 
-## Pages to open
+## URLs
 
-| URL | What it shows |
-|---|---|
-| <http://localhost:8080> | Project landing page |
-| <http://localhost:8080/orders> | Order history with items, prices and payments |
-| <http://localhost:8080/orders/10> | One order in full detail |
-| <http://localhost:8080/cart> | Task 3 cart |
-| <http://localhost:8080/api/orders> | Task 2 API |
-| <http://localhost:8080/api/data-quality> | Task 1 live findings |
+- http://localhost:8080 - home page
+- http://localhost:8080/orders - order history with items and payments
+- http://localhost:8080/orders/10 - one order in detail
+- http://localhost:8080/cart - Task 3 cart
+- http://localhost:8080/api/orders - Task 2 API
+- http://localhost:8080/api/data-quality - Task 1 findings as JSON
 
-## Troubleshooting
+## API endpoints
 
-| Problem | Fix |
-|---|---|
-| `Class "IntlDateFormatter" not found` | Enable `extension=intl` in `php.ini` or use `run.bat` |
-| `SQLite3 class not found` | Enable `extension=sqlite3` or use `run.bat` |
-| `vendor/autoload.php` missing | Run `composer install` |
-| Port 8080 already in use | Change the port in `run.bat` and `app/Config/App.php` / `.env` |
-| Database locked | Stop other PHP processes using `writable/database/restaurant_pos.sqlite` |
-| Composer asks for zip/unzip | Install 7-Zip/unzip or use `composer install --prefer-source` |
+All API responses are JSON.
 
-The database file is created at `writable/database/restaurant_pos.sqlite`.
+- `GET /api/health` - simple health check
+- `GET /api/orders` - paginated order list with items and payments
+- `GET /api/orders/{id}` - one order with full details
+- `GET /api/menu` - menu, categories, items and prices
+- `GET /api/data-quality` - the main data findings
 
-## Database
+`/api/orders` accepts these query parameters:
 
-Normalised tables:
+- `page` - default `1`
+- `per_page` - default `20`, maximum `100`
+- `status` - for example `Completed`
+- `search` - order number or status text
 
-- `menus`
-- `categories`
-- `items`
-- `item_prices` (supports Small / Large variants)
-- `orders`
-- `order_items` (historical price snapshot per line)
-- `payments` (supports split payments, tips, discounts and refunds)
-
-The seed data is the exact data from the PDF, stored in `app/Database/Seeds/assessment_data.json`.
-
-### Optional MySQL setup
-
-1. Create a database named `restaurant_pos`.
-2. Import `database/mysql_schema.sql`.
-3. Copy `env.mysql.example` values into `.env` (or edit the `database.default.*` lines).
-4. Set `database.default.DBDriver = MySQLi` and run the app.
-
-## API (Task 2)
-
-Base URL: `http://localhost:8080`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/health` | Health check |
-| GET | `/api/orders` | Paginated orders with items and payments |
-| GET | `/api/orders/{id}` | One order with full details and reconciliation |
-| GET | `/api/menu` | Nested menu -> category -> item -> prices |
-| GET | `/api/data-quality` | Live findings from Task 1 |
-
-### Query parameters for `/api/orders`
-
-| Parameter | Default | Notes |
-|---|---|---|
-| `page` | 1 | Positive integer |
-| `per_page` | 20 | 1-100 |
-| `status` | all | e.g. `Completed` |
-| `search` | empty | Numeric order number, or status text |
-
-Examples:
+Some example requests:
 
 ```text
 GET /api/orders
@@ -223,15 +179,7 @@ GET /api/menu
 GET /api/data-quality
 ```
 
-A ready-to-import Postman collection is in:
-
-```text
-postman/Restaurant-POS.postman_collection.json
-```
-
-It contains all endpoints plus an example order that has the payment mismatch (order 17).
-
-### API response shape
+The response looks like this:
 
 ```json
 {
@@ -242,89 +190,113 @@ It contains all endpoints plus an example order that has the payment mismatch (o
     "per_page": 20,
     "total": 11,
     "total_pages": 1,
-    "filters": { "status": null, "search": null }
+    "filters": {
+      "status": null,
+      "search": null
+    }
   }
 }
 ```
 
-Each order contains:
+Each order includes the order header, all line items with their historical prices, all payments, and the calculated order total, paid amount, refunded amount and balance due.
 
-- order header and status
-- line items with item name, category, menu, size, historical unit price, qty and line total
-- payments with transaction reference, amount due, tips, discount, amount paid, type and status
-- `order_total`, `paid_total`, `refunded_total`, `net_paid`, `balance_due` and `payment_status`
-
-## Cart (Task 3)
-
-Open <http://localhost:8080/cart>.
-
-- Five items: £10.00, £7.50, £5.00, £2.50 and £3.00.
-- Click an item to add it to the session cart.
-- `+` / `-` changes quantity; price and total recalculate immediately.
-- `Load example` reproduces the task sample: Item 1 x1, Item 2 x2, Item 4 x2 = **£30.00 total incl. tax**, **£3.33 tax**, **£26.67 net**.
-- Tax is 12.5% inclusive: `tax = total x 12.5 / 112.5 = total / 9`.
-- Money is calculated in integer pence to avoid floating-point errors.
-
-The cart state is also available as JSON at `/cart/state` after loading the sample.
-
-## Security and performance choices
-
-- CSRF protection on all cart POST routes.
-- Optional API key: set `api.key` in `.env` and send `X-API-Key`.
-- API rate limit: 120 requests per minute per IP (custom `RateLimitFilter`).
-- Input validation for pagination, order id, status and search length.
-- Query Builder / prepared statements for all database access; no user SQL concatenation.
-- Output escaping with `esc()` in all HTML views.
-- Security headers enabled globally (`secureheaders` filter).
-- Foreign keys, unique keys and indexes on `orders.order_date`, `orders.status`, `order_items.order_id`, `order_items.item_id`, `payments.order_id`, `payments.status`.
-- No N+1 queries: the order list uses one query for orders, one for all items and one for all payments, then groups them in PHP.
-- Pagination caps `per_page` at 100.
-- Payment reconciliation avoids summing the repeated `amount_due` value across split payments.
-
-## Task 1 notes
-
-Full findings: [`docs/DATA_FINDINGS.md`](docs/DATA_FINDINGS.md).
-
-Top findings:
-
-- Order History is order-line level, not one row per order.
-- 50 of 52 order lines use a historical price that differs from the current menu.
-- Order 17 has a £0.00438 order-total vs payment-amount mismatch.
-- Order 15 is marked Completed even though its only payment is Refunded.
-- Item 6 is missing its size on order 11, line 5.
-- Item 5 has a category/menu conflict (`cat_id` 2 = Drinks, but `menu_id` 1 = Food).
-- Split payments repeat `amount_due`, so it must not be summed.
-- Missing IDs: order line 40; payment refs 112, 113, 114, 117, 118.
-
-## Project structure
+The Postman collection is here:
 
 ```text
-app/
-  Controllers/        Web + API controllers
-  Database/           Migration, seeder and exact PDF data JSON
-  Filters/            API key and rate-limit filters
-  Helpers/            Money and payment badge helpers
-  Libraries/          OrderReportService and CartService
-  Models/             One model per table
-  Views/              Layout, orders and cart UI
-database/             MySQL schema + data
-docs/                 Data findings
-postman/              Postman collection
-public/assets/        CSS
-writable/database/    SQLite database
+postman/Restaurant-POS.postman_collection.json
 ```
 
-## AI-assisted development note
+Import it in Postman and run it while the app is running. It includes order 17, which is the order with the payment mismatch, and order 18, which has a split payment and a tip.
 
-AI assistance was used for boilerplate generation, converting the PDF tables into seed JSON, and a first-pass review of the money calculations. Every generated file was then run and checked locally:
+## Cart
 
-- migrations and seeding were executed,
-- `/api/orders`, `/api/orders/{id}`, `/api/menu`, `/api/data-quality` were called and inspected,
-- the cart was exercised with the exact sample (£30 total, £3.33 tax),
-- all PHP files were linted with `php -l`.
+Open http://localhost:8080/cart.
 
-The final logic (especially the payment reconciliation and inclusive-tax calculation) is documented above so it can be explained line by line in the interview.
+The cart has five items: £10.00, £7.50, £5.00, £2.50 and £3.00. Clicking an item adds it to the session cart. The `+` and `-` buttons change the quantity and update the line price and totals.
 
-## Suggested repository name
+The tax is 12.5% and the prices already include it. The tax amount is calculated like this:
 
-`restaurant-pos-ci4-assessment`
+```text
+tax = total incl. tax * 12.5 / 112.5
+tax = total incl. tax / 9
+```
+
+For the sample in the task (Item 1 x1, Item 2 x2, Item 4 x2):
+
+```text
+Total incl. tax: £30.00
+Tax: £3.33
+Net: £26.67
+```
+
+The cart uses integer pence for the calculations, so quantity changes do not cause floating-point errors. You can also see the cart state as JSON at `/cart/state`.
+
+## Data findings
+
+The detailed notes are in `docs/DATA_FINDINGS.md`.
+
+The main points I found:
+
+- Order History is order-line level, not one row per order.
+- 50 of the 52 order lines have a price that does not match the current menu price. The order line price should be treated as the price charged at that time.
+- Order 17 has a small mismatch: the order lines add up to 10.89618 but the payment amount due is 10.8918.
+- Order 15 is marked as Completed, but its only payment is marked as Refunded.
+- Item 6 is missing its size on order 11, line 5.
+- Item 5 belongs to category 2 (Soft Drinks, Drinks menu) but its own `menu_id` is 1 (Food).
+- Split payments repeat the same `amount_due` value, so it must not be summed across payment rows.
+- Some IDs are missing: order line 40 and payment references 112, 113, 114, 117 and 118.
+
+These findings are also returned by `GET /api/data-quality`, so they can be checked against the actual database.
+
+## Security and performance
+
+A few things I added to keep the API and cart safe:
+
+- CSRF protection on cart POST requests.
+- Optional API key. Set `api.key` in `.env` and send it in the `X-API-Key` header.
+- Rate limiting on the API: 120 requests per minute per IP.
+- Validation for page, per-page, order id, status and search length.
+- Query Builder and prepared statements for database queries.
+- Escaped output in the views.
+- Security headers enabled globally.
+- Foreign keys, unique keys and indexes on the order, order item and payment tables.
+- The order list uses three queries (orders, items, payments) instead of running a query for every order.
+- `per_page` is capped at 100.
+
+## How I used AI
+
+I used AI assistance for some boilerplate, for converting the PDF tables into the seed JSON, and for a first review of the payment and tax calculations. After that I ran the project locally and checked the results myself:
+
+- Ran the migration and seeder.
+- Checked `/api/orders`, `/api/orders/10`, `/api/orders/17`, `/api/menu` and `/api/data-quality`.
+- Tested the cart with the sample values and checked that the total is £30.00 and tax is £3.33.
+- Checked that changing quantity updates the totals.
+- Ran `php -l` on the PHP files.
+
+The payment reconciliation and the inclusive tax calculation are the two parts I would be ready to explain in the interview.
+
+## Folder overview
+
+```text
+app/Controllers     web and API controllers
+app/Database        migration, seeder and PDF data as JSON
+app/Filters         API key and rate-limit filters
+app/Helpers         money and payment badge helpers
+app/Libraries       order report service and cart service
+app/Models          one model per table
+app/Views           layout, orders and cart pages
+database            MySQL schema and sample data
+docs                data findings
+postman             Postman collection
+public/assets       CSS
+writable/database   SQLite database
+```
+
+## Common problems
+
+- `IntlDateFormatter not found`: enable `extension=intl` in `php.ini`, or use `run.bat`.
+- `SQLite3 class not found`: enable `extension=sqlite3`, or use `run.bat`.
+- `vendor/autoload.php` missing: run `composer install`.
+- Port 8080 already in use: stop the other process or change the port in `run.bat` and `.env`.
+- Database locked: close other PHP processes that are using the SQLite file.
+- Composer complains about zip/unzip: install 7-Zip or unzip, or run `composer install --prefer-source`.
