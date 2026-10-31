@@ -1,0 +1,977 @@
+{
+  "menus": [
+    {
+      "id": 1,
+      "name": "Food"
+    },
+    {
+      "id": 2,
+      "name": "Drinks"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Starters",
+      "menu_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Soft Drinks",
+      "menu_id": 2
+    },
+    {
+      "id": 3,
+      "name": "Mains",
+      "menu_id": 1
+    },
+    {
+      "id": 4,
+      "name": "Desserts",
+      "menu_id": 2
+    },
+    {
+      "id": 5,
+      "name": "Hot Drinks",
+      "menu_id": 2
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Item1",
+      "category_id": 1,
+      "menu_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Item2",
+      "category_id": 1,
+      "menu_id": 1
+    },
+    {
+      "id": 3,
+      "name": "Item3",
+      "category_id": 2,
+      "menu_id": 2
+    },
+    {
+      "id": 4,
+      "name": "Item4",
+      "category_id": 2,
+      "menu_id": 2
+    },
+    {
+      "id": 5,
+      "name": "Item5",
+      "category_id": 2,
+      "menu_id": 1
+    },
+    {
+      "id": 6,
+      "name": "Item6",
+      "category_id": 3,
+      "menu_id": 1
+    },
+    {
+      "id": 7,
+      "name": "Item7",
+      "category_id": 3,
+      "menu_id": 1
+    },
+    {
+      "id": 8,
+      "name": "Item8",
+      "category_id": 4,
+      "menu_id": 2
+    },
+    {
+      "id": 9,
+      "name": "Item9",
+      "category_id": 4,
+      "menu_id": 2
+    },
+    {
+      "id": 10,
+      "name": "Item10",
+      "category_id": 5,
+      "menu_id": 2
+    }
+  ],
+  "item_prices": [
+    {
+      "id": 1,
+      "item_id": 1,
+      "size": "Small",
+      "price": "1.50"
+    },
+    {
+      "id": 2,
+      "item_id": 1,
+      "size": "Large",
+      "price": "2.50"
+    },
+    {
+      "id": 3,
+      "item_id": 2,
+      "size": null,
+      "price": "3"
+    },
+    {
+      "id": 4,
+      "item_id": 3,
+      "size": null,
+      "price": "2.5"
+    },
+    {
+      "id": 5,
+      "item_id": 4,
+      "size": null,
+      "price": "1.5"
+    },
+    {
+      "id": 6,
+      "item_id": 5,
+      "size": null,
+      "price": "1"
+    },
+    {
+      "id": 7,
+      "item_id": 6,
+      "size": "Small",
+      "price": "2.50"
+    },
+    {
+      "id": 8,
+      "item_id": 6,
+      "size": "Large",
+      "price": "3.6"
+    },
+    {
+      "id": 9,
+      "item_id": 7,
+      "size": null,
+      "price": "2.5"
+    },
+    {
+      "id": 10,
+      "item_id": 8,
+      "size": "Small",
+      "price": "3.75"
+    },
+    {
+      "id": 11,
+      "item_id": 8,
+      "size": "Large",
+      "price": "6.5"
+    },
+    {
+      "id": 12,
+      "item_id": 9,
+      "size": null,
+      "price": "1.5"
+    },
+    {
+      "id": 13,
+      "item_id": 10,
+      "size": null,
+      "price": "2"
+    }
+  ],
+  "orders": [
+    {
+      "id": 10,
+      "order_number": 10,
+      "order_date": "2025-10-01",
+      "status": "Completed"
+    },
+    {
+      "id": 11,
+      "order_number": 11,
+      "order_date": "2025-10-01",
+      "status": "Completed"
+    },
+    {
+      "id": 12,
+      "order_number": 12,
+      "order_date": "2025-10-01",
+      "status": "Completed"
+    },
+    {
+      "id": 13,
+      "order_number": 13,
+      "order_date": "2025-10-01",
+      "status": "Completed"
+    },
+    {
+      "id": 14,
+      "order_number": 14,
+      "order_date": "2025-10-01",
+      "status": "Completed"
+    },
+    {
+      "id": 15,
+      "order_number": 15,
+      "order_date": "2025-10-02",
+      "status": "Completed"
+    },
+    {
+      "id": 16,
+      "order_number": 16,
+      "order_date": "2025-10-03",
+      "status": "Completed"
+    },
+    {
+      "id": 17,
+      "order_number": 17,
+      "order_date": "2025-10-01",
+      "status": "Completed"
+    },
+    {
+      "id": 18,
+      "order_number": 18,
+      "order_date": "2025-10-05",
+      "status": "Completed"
+    },
+    {
+      "id": 19,
+      "order_number": 19,
+      "order_date": "2025-10-01",
+      "status": "Completed"
+    },
+    {
+      "id": 20,
+      "order_number": 20,
+      "order_date": "2025-10-01",
+      "status": "Completed"
+    }
+  ],
+  "order_items": [
+    {
+      "id": 1,
+      "order_id": 10,
+      "item_id": 2,
+      "size": null,
+      "unit_price": "2.5",
+      "qty": 1,
+      "line_total": "2.5",
+      "status": "Completed"
+    },
+    {
+      "id": 2,
+      "order_id": 10,
+      "item_id": 3,
+      "size": null,
+      "unit_price": "1.5",
+      "qty": 2,
+      "line_total": "3",
+      "status": "Completed"
+    },
+    {
+      "id": 3,
+      "order_id": 10,
+      "item_id": 1,
+      "size": "Small",
+      "unit_price": "3.75",
+      "qty": 1,
+      "line_total": "3.75",
+      "status": "Completed"
+    },
+    {
+      "id": 4,
+      "order_id": 11,
+      "item_id": 5,
+      "size": null,
+      "unit_price": "2.75",
+      "qty": 1,
+      "line_total": "2.75",
+      "status": "Completed"
+    },
+    {
+      "id": 5,
+      "order_id": 11,
+      "item_id": 6,
+      "size": null,
+      "unit_price": "1.75",
+      "qty": 2,
+      "line_total": "3.5",
+      "status": "Completed"
+    },
+    {
+      "id": 6,
+      "order_id": 11,
+      "item_id": 2,
+      "size": null,
+      "unit_price": "2.5",
+      "qty": 1,
+      "line_total": "2.5",
+      "status": "Completed"
+    },
+    {
+      "id": 7,
+      "order_id": 11,
+      "item_id": 3,
+      "size": null,
+      "unit_price": "3.5",
+      "qty": 1,
+      "line_total": "3.5",
+      "status": "Completed"
+    },
+    {
+      "id": 8,
+      "order_id": 11,
+      "item_id": 4,
+      "size": null,
+      "unit_price": "3.75",
+      "qty": 2,
+      "line_total": "7.5",
+      "status": "Completed"
+    },
+    {
+      "id": 9,
+      "order_id": 11,
+      "item_id": 5,
+      "size": null,
+      "unit_price": "1.5",
+      "qty": 1,
+      "line_total": "1.5",
+      "status": "Completed"
+    },
+    {
+      "id": 10,
+      "order_id": 12,
+      "item_id": 6,
+      "size": "Large",
+      "unit_price": "5.5",
+      "qty": 2,
+      "line_total": "11",
+      "status": "Completed"
+    },
+    {
+      "id": 11,
+      "order_id": 12,
+      "item_id": 7,
+      "size": null,
+      "unit_price": "2.5",
+      "qty": 1,
+      "line_total": "2.5",
+      "status": "Completed"
+    },
+    {
+      "id": 12,
+      "order_id": 12,
+      "item_id": 1,
+      "size": "Large",
+      "unit_price": "3.5",
+      "qty": 1,
+      "line_total": "3.5",
+      "status": "Completed"
+    },
+    {
+      "id": 13,
+      "order_id": 13,
+      "item_id": 1,
+      "size": "Small",
+      "unit_price": "2.75",
+      "qty": 2,
+      "line_total": "5.5",
+      "status": "Completed"
+    },
+    {
+      "id": 14,
+      "order_id": 13,
+      "item_id": 6,
+      "size": "Small",
+      "unit_price": "1.5",
+      "qty": 1,
+      "line_total": "1.5",
+      "status": "Completed"
+    },
+    {
+      "id": 15,
+      "order_id": 13,
+      "item_id": 8,
+      "size": "Small",
+      "unit_price": "3.5",
+      "qty": 1,
+      "line_total": "3.5",
+      "status": "Completed"
+    },
+    {
+      "id": 16,
+      "order_id": 13,
+      "item_id": 1,
+      "size": "Small",
+      "unit_price": "2.5",
+      "qty": 2,
+      "line_total": "5",
+      "status": "Completed"
+    },
+    {
+      "id": 17,
+      "order_id": 14,
+      "item_id": 6,
+      "size": "Large",
+      "unit_price": "2.75",
+      "qty": 1,
+      "line_total": "2.75",
+      "status": "Completed"
+    },
+    {
+      "id": 18,
+      "order_id": 14,
+      "item_id": 1,
+      "size": "Large",
+      "unit_price": "2.75655",
+      "qty": 2,
+      "line_total": "5.5131",
+      "status": "Completed"
+    },
+    {
+      "id": 19,
+      "order_id": 14,
+      "item_id": 8,
+      "size": "Large",
+      "unit_price": "2.75",
+      "qty": 2,
+      "line_total": "5.5",
+      "status": "Completed"
+    },
+    {
+      "id": 20,
+      "order_id": 14,
+      "item_id": 1,
+      "size": "Large",
+      "unit_price": "2.7556",
+      "qty": 2,
+      "line_total": "5.5112",
+      "status": "Completed"
+    },
+    {
+      "id": 21,
+      "order_id": 14,
+      "item_id": 4,
+      "size": null,
+      "unit_price": "5.5",
+      "qty": 1,
+      "line_total": "5.5",
+      "status": "Completed"
+    },
+    {
+      "id": 22,
+      "order_id": 14,
+      "item_id": 3,
+      "size": null,
+      "unit_price": "2.75",
+      "qty": 2,
+      "line_total": "5.5",
+      "status": "Completed"
+    },
+    {
+      "id": 23,
+      "order_id": 14,
+      "item_id": 2,
+      "size": null,
+      "unit_price": "3.5",
+      "qty": 1,
+      "line_total": "3.5",
+      "status": "Completed"
+    },
+    {
+      "id": 24,
+      "order_id": 14,
+      "item_id": 6,
+      "size": "Large",
+      "unit_price": "3.015",
+      "qty": 3,
+      "line_total": "9.045",
+      "status": "Completed"
+    },
+    {
+      "id": 25,
+      "order_id": 15,
+      "item_id": 2,
+      "size": null,
+      "unit_price": "2.568",
+      "qty": 2,
+      "line_total": "5.136",
+      "status": "Completed"
+    },
+    {
+      "id": 26,
+      "order_id": 16,
+      "item_id": 6,
+      "size": "Large",
+      "unit_price": "6.586",
+      "qty": 3,
+      "line_total": "19.758",
+      "status": "Completed"
+    },
+    {
+      "id": 27,
+      "order_id": 17,
+      "item_id": 10,
+      "size": null,
+      "unit_price": "2.5",
+      "qty": 1,
+      "line_total": "2.5",
+      "status": "Completed"
+    },
+    {
+      "id": 28,
+      "order_id": 17,
+      "item_id": 9,
+      "size": null,
+      "unit_price": "2.75636",
+      "qty": 1,
+      "line_total": "2.75636",
+      "status": "Completed"
+    },
+    {
+      "id": 29,
+      "order_id": 17,
+      "item_id": 7,
+      "size": null,
+      "unit_price": "5.63982",
+      "qty": 1,
+      "line_total": "5.63982",
+      "status": "Completed"
+    },
+    {
+      "id": 30,
+      "order_id": 18,
+      "item_id": 1,
+      "size": "Small",
+      "unit_price": "2.5698",
+      "qty": 2,
+      "line_total": "5.1396",
+      "status": "Completed"
+    },
+    {
+      "id": 31,
+      "order_id": 18,
+      "item_id": 6,
+      "size": "Small",
+      "unit_price": "5.36245",
+      "qty": 2,
+      "line_total": "10.7249",
+      "status": "Completed"
+    },
+    {
+      "id": 32,
+      "order_id": 18,
+      "item_id": 8,
+      "size": "Small",
+      "unit_price": "5.23569",
+      "qty": 2,
+      "line_total": "10.47138",
+      "status": "Completed"
+    },
+    {
+      "id": 33,
+      "order_id": 19,
+      "item_id": 2,
+      "size": null,
+      "unit_price": "2.75698",
+      "qty": 1,
+      "line_total": "2.75698",
+      "status": "Completed"
+    },
+    {
+      "id": 34,
+      "order_id": 19,
+      "item_id": 4,
+      "size": null,
+      "unit_price": "2.356",
+      "qty": 1,
+      "line_total": "2.356",
+      "status": "Completed"
+    },
+    {
+      "id": 35,
+      "order_id": 19,
+      "item_id": 5,
+      "size": null,
+      "unit_price": "2.457",
+      "qty": 2,
+      "line_total": "4.914",
+      "status": "Completed"
+    },
+    {
+      "id": 36,
+      "order_id": 19,
+      "item_id": 7,
+      "size": null,
+      "unit_price": "2.6359",
+      "qty": 1,
+      "line_total": "2.6359",
+      "status": "Completed"
+    },
+    {
+      "id": 37,
+      "order_id": 19,
+      "item_id": 9,
+      "size": null,
+      "unit_price": "6.523",
+      "qty": 1,
+      "line_total": "6.523",
+      "status": "Completed"
+    },
+    {
+      "id": 38,
+      "order_id": 19,
+      "item_id": 10,
+      "size": null,
+      "unit_price": "8.5412",
+      "qty": 3,
+      "line_total": "25.6236",
+      "status": "Completed"
+    },
+    {
+      "id": 39,
+      "order_id": 19,
+      "item_id": 6,
+      "size": "Large",
+      "unit_price": "5.683",
+      "qty": 2,
+      "line_total": "11.366",
+      "status": "Completed"
+    },
+    {
+      "id": 41,
+      "order_id": 19,
+      "item_id": 2,
+      "size": null,
+      "unit_price": "6.3564",
+      "qty": 1,
+      "line_total": "6.3564",
+      "status": "Completed"
+    },
+    {
+      "id": 42,
+      "order_id": 19,
+      "item_id": 5,
+      "size": null,
+      "unit_price": "7.235",
+      "qty": 1,
+      "line_total": "7.235",
+      "status": "Completed"
+    },
+    {
+      "id": 43,
+      "order_id": 19,
+      "item_id": 7,
+      "size": null,
+      "unit_price": "2.365",
+      "qty": 1,
+      "line_total": "2.365",
+      "status": "Completed"
+    },
+    {
+      "id": 44,
+      "order_id": 20,
+      "item_id": 1,
+      "size": "Large",
+      "unit_price": "2.3658",
+      "qty": 1,
+      "line_total": "2.3658",
+      "status": "Completed"
+    },
+    {
+      "id": 45,
+      "order_id": 20,
+      "item_id": 3,
+      "size": null,
+      "unit_price": "2.356",
+      "qty": 1,
+      "line_total": "2.356",
+      "status": "Completed"
+    },
+    {
+      "id": 46,
+      "order_id": 20,
+      "item_id": 6,
+      "size": "Large",
+      "unit_price": "1.256",
+      "qty": 1,
+      "line_total": "1.256",
+      "status": "Completed"
+    },
+    {
+      "id": 47,
+      "order_id": 20,
+      "item_id": 4,
+      "size": null,
+      "unit_price": "2.635",
+      "qty": 1,
+      "line_total": "2.635",
+      "status": "Completed"
+    },
+    {
+      "id": 48,
+      "order_id": 20,
+      "item_id": 5,
+      "size": null,
+      "unit_price": "5.21",
+      "qty": 1,
+      "line_total": "5.21",
+      "status": "Completed"
+    },
+    {
+      "id": 49,
+      "order_id": 20,
+      "item_id": 7,
+      "size": null,
+      "unit_price": "6.325",
+      "qty": 2,
+      "line_total": "12.65",
+      "status": "Completed"
+    },
+    {
+      "id": 50,
+      "order_id": 20,
+      "item_id": 8,
+      "size": "Small",
+      "unit_price": "7.2514",
+      "qty": 1,
+      "line_total": "7.2514",
+      "status": "Completed"
+    },
+    {
+      "id": 51,
+      "order_id": 20,
+      "item_id": 9,
+      "size": null,
+      "unit_price": "2.3999",
+      "qty": 1,
+      "line_total": "2.3999",
+      "status": "Completed"
+    },
+    {
+      "id": 52,
+      "order_id": 20,
+      "item_id": 4,
+      "size": null,
+      "unit_price": "2.356",
+      "qty": 3,
+      "line_total": "7.068",
+      "status": "Completed"
+    },
+    {
+      "id": 53,
+      "order_id": 20,
+      "item_id": 6,
+      "size": "Small",
+      "unit_price": "4.5326",
+      "qty": 2,
+      "line_total": "9.0652",
+      "status": "Completed"
+    }
+  ],
+  "payments": [
+    {
+      "id": 1,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "100",
+      "order_id": 10,
+      "amount_due": "9.25",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "9.25",
+      "payment_type": "Card",
+      "status": "Completed"
+    },
+    {
+      "id": 2,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "101",
+      "order_id": 11,
+      "amount_due": "21.25",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "10",
+      "payment_type": "Cash",
+      "status": "Completed"
+    },
+    {
+      "id": 3,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "102",
+      "order_id": 11,
+      "amount_due": "21.25",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "11.25",
+      "payment_type": "Card",
+      "status": "Completed"
+    },
+    {
+      "id": 4,
+      "payment_date": "2025-10-02",
+      "transaction_ref": "103",
+      "order_id": 12,
+      "amount_due": "17",
+      "tips": "3",
+      "discount": "4",
+      "total_paid": "16",
+      "payment_type": "Card",
+      "status": "Completed"
+    },
+    {
+      "id": 5,
+      "payment_date": "2025-10-03",
+      "transaction_ref": "104",
+      "order_id": 13,
+      "amount_due": "15.5",
+      "tips": "0",
+      "discount": "2",
+      "total_paid": "13.5",
+      "payment_type": "Card",
+      "status": "Completed"
+    },
+    {
+      "id": 6,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "105",
+      "order_id": 14,
+      "amount_due": "42.8193",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "20",
+      "payment_type": "Cash",
+      "status": "Completed"
+    },
+    {
+      "id": 7,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "106",
+      "order_id": 14,
+      "amount_due": "42.8193",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "22.82",
+      "payment_type": "Card",
+      "status": "Completed"
+    },
+    {
+      "id": 8,
+      "payment_date": "2025-10-02",
+      "transaction_ref": "107",
+      "order_id": 15,
+      "amount_due": "5.136",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "5.14",
+      "payment_type": "Card",
+      "status": "Refunded"
+    },
+    {
+      "id": 9,
+      "payment_date": "2025-10-03",
+      "transaction_ref": "108",
+      "order_id": 16,
+      "amount_due": "19.758",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "10",
+      "payment_type": "Cash",
+      "status": "Completed"
+    },
+    {
+      "id": 10,
+      "payment_date": "2025-10-03",
+      "transaction_ref": "109",
+      "order_id": 16,
+      "amount_due": "19.758",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "9.76",
+      "payment_type": "Card",
+      "status": "Completed"
+    },
+    {
+      "id": 11,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "110",
+      "order_id": 17,
+      "amount_due": "10.8918",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "10.9",
+      "payment_type": "Card",
+      "status": "Completed"
+    },
+    {
+      "id": 12,
+      "payment_date": "2025-10-05",
+      "transaction_ref": "111",
+      "order_id": 18,
+      "amount_due": "26.33588",
+      "tips": "2",
+      "discount": "0",
+      "total_paid": "25",
+      "payment_type": "Cash",
+      "status": "Completed"
+    },
+    {
+      "id": 13,
+      "payment_date": "2025-10-05",
+      "transaction_ref": "115",
+      "order_id": 18,
+      "amount_due": "26.33588",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "3.34",
+      "payment_type": "Card",
+      "status": "Completed"
+    },
+    {
+      "id": 14,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "116",
+      "order_id": 19,
+      "amount_due": "72.13188",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "50",
+      "payment_type": "Cash",
+      "status": "Completed"
+    },
+    {
+      "id": 15,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "119",
+      "order_id": 19,
+      "amount_due": "72.13188",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "22.13",
+      "payment_type": "Card",
+      "status": "Completed"
+    },
+    {
+      "id": 16,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "120",
+      "order_id": 20,
+      "amount_due": "52.2573",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "25",
+      "payment_type": "Cash",
+      "status": "Completed"
+    },
+    {
+      "id": 17,
+      "payment_date": "2025-10-01",
+      "transaction_ref": "121",
+      "order_id": 20,
+      "amount_due": "52.2573",
+      "tips": "0",
+      "discount": "0",
+      "total_paid": "27.28",
+      "payment_type": "Card",
+      "status": "Completed"
+    }
+  ]
+}

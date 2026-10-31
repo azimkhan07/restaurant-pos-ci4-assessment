@@ -1,0 +1,132 @@
+{
+  "info": {
+    "name": "Restaurant POS - CI4 Assessment",
+    "description": "Task 2 API collection. Start the app on http://localhost:8080 before running. If api.key is set in .env, set the apiKey variable and enable the X-API-Key header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "apiKey", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}", "disabled": true }
+        ],
+        "url": "{{baseUrl}}/api/health",
+        "description": "Returns service, environment, PHP version and time."
+      }
+    },
+    {
+      "name": "Orders - all (full details)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}", "disabled": true }
+        ],
+        "url": "{{baseUrl}}/api/orders",
+        "description": "Paginated orders with items, prices and payments."
+      }
+    },
+    {
+      "name": "Orders - filtered",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}", "disabled": true }
+        ],
+        "url": "{{baseUrl}}/api/orders?status=Completed&per_page=5",
+        "description": "Filter by status and limit page size."
+      }
+    },
+    {
+      "name": "Order detail - 10",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}", "disabled": true }
+        ],
+        "url": "{{baseUrl}}/api/orders/10",
+        "description": "A normal order with one payment."
+      }
+    },
+    {
+      "name": "Order detail - 17 (payment mismatch)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}", "disabled": true }
+        ],
+        "url": "{{baseUrl}}/api/orders/17",
+        "description": "Calculated total 10.89618 vs payment amount due 10.8918."
+      }
+    },
+    {
+      "name": "Order detail - 18 (split payment + tip)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}", "disabled": true }
+        ],
+        "url": "{{baseUrl}}/api/orders/18",
+        "description": "Two payments and a 2.00 tip."
+      }
+    },
+    {
+      "name": "Order detail - 15 (refunded payment)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}", "disabled": true }
+        ],
+        "url": "{{baseUrl}}/api/orders/15",
+        "description": "Order status Completed but payment status Refunded."
+      }
+    },
+    {
+      "name": "Menu",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}", "disabled": true }
+        ],
+        "url": "{{baseUrl}}/api/menu",
+        "description": "Nested menu -> category -> item -> price data."
+      }
+    },
+    {
+      "name": "Data quality findings",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "X-API-Key", "value": "{{apiKey}}", "disabled": true }
+        ],
+        "url": "{{baseUrl}}/api/data-quality",
+        "description": "Live version of the Task 1 findings."
+      }
+    },
+    {
+      "name": "Cart state (Task 3 JSON)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Accept", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/cart/state",
+        "description": "Load the sample cart in the browser first, then call this endpoint."
+      }
+    }
+  ]
+}
