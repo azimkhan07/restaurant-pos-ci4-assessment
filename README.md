@@ -8,38 +8,165 @@ This project completes the three tasks in `_PHP Task (2).pdf`:
 
 > The task PDF explicitly says **CodeIgniter 4** (`Codignator 4`). This project uses CodeIgniter **4.7.5**.
 
-## Requirements
+## GitHub repository description (copy this)
 
-- PHP 8.1+ (tested on PHP 8.2.12)
-- `intl` and `sqlite3` PHP extensions
-- Composer (only needed if you reinstall dependencies)
+**Short description (GitHub "About" field):**
 
-The project ships with SQLite so it runs without a MySQL server. A MySQL schema + data file is also included in `database/mysql_schema.sql` if you prefer MySQL.
-
-## Quick start (Windows / XAMPP)
-
-```bat
-cd restaurant-pos
-composer install
-php spark migrate --all
-php spark db:seed AssessmentSeeder
-php spark serve
+```text
+CodeIgniter 4 restaurant POS assessment: orders + payments API, data-quality findings, and a session cart with 12.5% inclusive tax.
 ```
 
-If `intl` / `sqlite3` are not enabled in `php.ini`, either uncomment these lines:
+**Long description:**
+
+```text
+A complete CodeIgniter 4 (PHP 8) assessment project for a restaurant POS use case. It contains: (1) a normalised SQLite/MySQL database built from the supplied menu, order-history and payments data, with documented data-quality findings; (2) a paginated REST API that lists orders with full line-item, price, payment, tips, discount, refund and balance-due details, plus a live data-quality endpoint; and (3) a session-based cart with five items, quantity increase/decrease, and correct 12.5% inclusive tax calculation in integer pence. Includes migrations, seeder, Postman collection, security filters (API key, rate limiting, CSRF), indexes and setup instructions.
+```
+
+**Suggested GitHub topics:**
+
+```text
+codeigniter4, php, php8, rest-api, mysql, sqlite, postman, restaurant-pos, shopping-cart, tax-calculation, interview-assessment
+```
+
+## What is included
+
+- `app/` - controllers, models, services, filters, views, migration and seeder
+- `database/mysql_schema.sql` - optional MySQL schema + all sample data
+- `docs/DATA_FINDINGS.md` - Task 1 notes in detail
+- `postman/Restaurant-POS.postman_collection.json` - Task 2 Postman requests
+- `writable/database/restaurant_pos.sqlite` - ready-to-use SQLite database
+- `run.bat` - Windows one-click server start
+- `.env` - local SQLite configuration (no secrets)
+
+## Requirements
+
+| Requirement | Details |
+|---|---|
+| PHP | 8.1 or newer; tested on 8.2.12 |
+| PHP extensions | `intl`, `sqlite3`, `mbstring`, `json` (the first two are the important ones for CI4 + SQLite) |
+| Composer | Needed only if `vendor/` is missing (it is not committed to Git) |
+| Database | SQLite is included; MySQL is optional |
+| Browser | Any modern browser for the UI |
+| Postman | Optional, for importing the API collection |
+
+Check your PHP setup:
+
+```bat
+php -v
+php -m
+```
+
+You should see `intl` and `sqlite3` in the module list. If they are missing, open `php.ini` and uncomment:
 
 ```ini
 extension=intl
 extension=sqlite3
 ```
 
-or use the bundled `run.bat`, which starts PHP with both extensions:
+Restart the terminal/Apache after changing `php.ini`.
+
+## How to run - full steps
+
+### Option A - Windows with XAMPP (recommended)
+
+1. Clone the repository:
+
+   ```bat
+   git clone https://github.com/azimkhan07/restaurant-pos-ci4-assessment.git
+   cd restaurant-pos-ci4-assessment
+   ```
+
+2. Install dependencies if the `vendor` folder is missing:
+
+   ```bat
+   composer install
+   ```
+
+   If Composer reports that `ext-intl` is missing, enable `intl` in `php.ini` first, or run:
+
+   ```bat
+   php -d extension=intl C:\composer\composer.phar install
+   ```
+
+3. Make sure `.env` exists. It is committed in this repository. If it is missing:
+
+   ```bat
+   copy env .env
+   ```
+
+4. Start the app:
+
+   ```bat
+   run.bat
+   ```
+
+   `run.bat` automatically uses `D:\xampp\php\php.exe` when `php` is not on PATH and starts the server with `intl` + `sqlite3` enabled.
+
+5. Open <http://localhost:8080>.
+
+The bundled SQLite database is already seeded. If you want to rebuild it from scratch:
 
 ```bat
-run.bat
+php spark migrate --all
+php spark db:seed AssessmentSeeder
+```
+
+### Option B - Any OS with PHP on PATH
+
+```bash
+composer install
+cp env .env          # only if .env is missing
+php spark migrate --all
+php spark db:seed AssessmentSeeder
+php spark serve
+```
+
+If the `intl`/`sqlite3` extensions are not enabled globally, start the PHP server directly with them enabled:
+
+```bash
+php -d extension=intl -d extension=sqlite3 -S 127.0.0.1:8080 -t public public/index.php
 ```
 
 Then open <http://localhost:8080>.
+
+### Option C - MySQL instead of SQLite
+
+1. Create a MySQL database named `restaurant_pos`.
+2. Import `database/mysql_schema.sql`.
+3. Copy the values from `env.mysql.example` into `.env`:
+
+   ```ini
+   database.default.hostname = localhost
+   database.default.database = restaurant_pos
+   database.default.username = root
+   database.default.password =
+   database.default.DBDriver = MySQLi
+   database.default.port = 3306
+   ```
+
+4. Restart the server. No migration is needed because the SQL file creates and seeds all tables.
+
+## Pages to open
+
+| URL | What it shows |
+|---|---|
+| <http://localhost:8080> | Project landing page |
+| <http://localhost:8080/orders> | Order history with items, prices and payments |
+| <http://localhost:8080/orders/10> | One order in full detail |
+| <http://localhost:8080/cart> | Task 3 cart |
+| <http://localhost:8080/api/orders> | Task 2 API |
+| <http://localhost:8080/api/data-quality> | Task 1 live findings |
+
+## Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| `Class "IntlDateFormatter" not found` | Enable `extension=intl` in `php.ini` or use `run.bat` |
+| `SQLite3 class not found` | Enable `extension=sqlite3` or use `run.bat` |
+| `vendor/autoload.php` missing | Run `composer install` |
+| Port 8080 already in use | Change the port in `run.bat` and `app/Config/App.php` / `.env` |
+| Database locked | Stop other PHP processes using `writable/database/restaurant_pos.sqlite` |
+| Composer asks for zip/unzip | Install 7-Zip/unzip or use `composer install --prefer-source` |
 
 The database file is created at `writable/database/restaurant_pos.sqlite`.
 
