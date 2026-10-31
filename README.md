@@ -14,21 +14,21 @@ I tested it on Windows with XAMPP and PHP 8.2.12. SQLite is used by default so i
 
 Short description:
 
-```text
+
 CodeIgniter 4 restaurant POS assessment with an orders/payments API, data-quality findings and a session cart that handles 12.5% inclusive tax.
-```
+
 
 Long description:
 
-```text
+
 CodeIgniter 4 (PHP 8) assessment project for a restaurant POS. It includes a normalised menu/order/payment database, a paginated REST API for orders with full item and payment details, a live data-quality endpoint with the findings from the supplied data, and a session-based cart with quantity controls and 12.5% inclusive tax. The project includes migrations, seed data, a Postman collection, API key support, rate limiting, CSRF protection and setup instructions for SQLite and MySQL.
-```
+
 
 Topics:
 
-```text
+
 codeigniter4, php, php8, rest-api, mysql, sqlite, postman, restaurant-pos, shopping-cart, tax-calculation, interview-assessment
-```
+
 
 ## Requirements
 
